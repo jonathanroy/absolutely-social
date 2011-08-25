@@ -167,6 +167,8 @@
 				echo "<option value=\"" . $size . "\"" . ( ( isset($asocial_options['icon_size']) && $asocial_options['icon_size'] == $size ) ? " selected=\"selected\"" : "" ) . ">" . $size . "px</option>";
 			}
 			echo "</select>" . PHP_EOL;
+
+			var_dump($icon_sets[$asocial_options['icon_set']]['sizes']);
 		}
 
 	//	callback fn for doctype
