@@ -168,7 +168,7 @@
 			}
 			echo "</select>" . PHP_EOL;
 
-			var_dump($icon_sets[$asocial_options['icon_set']]['sizes']);
+			var_dump($icon_sets, $asocial_options['icon_set']);
 		}
 
 	//	callback fn for doctype
