@@ -219,6 +219,17 @@
 		}
 
 
+		function asocial_insert_icons_before_post($content)
+		{
+			return asocial_insert_icons() . $content . 'asocialized';
+		}
+
+		function asocial_insert_icons_after_post($content)
+		{
+			return $content . asocial_insert_icons() . 'asocialized';
+		}
+
+
 
 /*	5)	Add Boilerplate options to page as requested */
 		if ( is_single() ) {
@@ -226,12 +237,14 @@
 			$asocial_options = get_option('asocial_options');
 
 			// insert icons
-			if ( isset($asocial_options['insert_where']) && $asocial_options['insert_where'] == 'before_post' ) {
-				add_filter('the_content', function($content) { return $content . asocial_insert_icons() . 'asocialized'; });
-			}
+			if ( isset($asocial_options['insert_where']) && $asocial_options['insert_where'] ) {
 
-			if ( isset($asocial_options['insert_where']) && $asocial_options['insert_where'] == 'after_post' ) {
-				add_filter('the_content', function($content) { return asocial_insert_icons() . $content . 'asocialized'; });
+				if ( $asocial_options['insert_where'] == 'before_post' )
+					add_filter('the_content', 'asocial_insert_icons_before_post');
+
+				if ( $asocial_options['insert_where'] == 'after_post' )
+					add_filter('the_content', 'asocial_insert_icons_after_post');
+
 			}
 
 		}
