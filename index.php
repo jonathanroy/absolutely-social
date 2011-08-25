@@ -233,10 +233,10 @@
 
 /*	5)	Add Boilerplate options to page as requested */
 		if ( is_single() ) {
-
-			echo "ASOCIAL SHOULD DUMP ICONS NOW!!!!!!!!!!!";
 			
 			$asocial_options = get_option('asocial_options');
+
+			add_filter('the_content', 'asocial_insert_icons_after_post');
 
 			// insert icons
 			if ( isset($asocial_options['insert_where']) && $asocial_options['insert_where'] ) {
