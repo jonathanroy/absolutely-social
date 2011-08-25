@@ -172,6 +172,8 @@
 	//	callback fn for doctype
 		function asocial_site_setting($key)
 		{
+			var_dump($key);
+
 			global $asocial_sites;
 
 			$asocial_options = get_option('asocial_options');
