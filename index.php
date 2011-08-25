@@ -28,7 +28,7 @@
 		'linkedin' => array( 'name' => 'LinkedIn', 'submit-url' => 'http://www.linkedin.com/shareArticle?mini=true&url=%the_permalink%&title=%the_title%&summary=%the_excerpt%' ),
 		'newsvine' => array( 'name' => 'Newsvine', 'submit-url' => 'http://www.newsvine.com/_tools/seed&save?u=%the_permalink%&h=%the_title%' ),
 		'stumbleupon' => array( 'name' => 'StumbleUpon', 'submit-url' => 'http://www.stumbleupon.com/submit?url=%the_permalink%&title=%the_title%' ),
-		'tumblr' => array( 'name' => 'Tumblr', 'submit-url' => 'http://www.tumblr.com/share?v=3&u=%the_permalink%&t=%the_title%&s=%the_excerpt%' ),
+		'tumblr' => array( 'name' => 'Tumblr', 'submit-url' => 'http://www.tumblr.com/share/link?url=%the_permalink%&name=%the_title%&description=%the_excerpt%' ),
 		'twitter' => array( 'name' => 'Twitter', 'submit-url' => 'http://twitter.com/home?status=%the_title% - %the_permalink%' ),
 		'yahoo-bookmarks' => array( 'name' => 'Yahoo Bookmarks', 'submit-url' => 'http://bookmarks.yahoo.com/toolbar/savebm?u=%the_permalink%&t=%the_title%' )
 	);
