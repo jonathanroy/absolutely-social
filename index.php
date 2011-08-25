@@ -233,6 +233,8 @@
 
 /*	5)	Add Boilerplate options to page as requested */
 		if ( is_single() ) {
+
+			echo "ASOCIAL SHOULD DUMP ICONS NOW!!!!!!!!!!!";
 			
 			$asocial_options = get_option('asocial_options');
 
