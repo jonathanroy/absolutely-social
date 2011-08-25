@@ -215,7 +215,7 @@
 				$post->post_excerpt,
 			);
 
-			return str_replace($symbol, $value, $url);
+			return url_encode( str_replace($symbol, $value, $url) );
 		}
 
 		function asocial_insert_icons()
