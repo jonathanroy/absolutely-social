@@ -177,7 +177,7 @@
 			$asocial_options = get_option('asocial_options');
 			
 			$checked = ( isset($asocial_options[$key]) && $asocial_options[$key] ) ? 'checked="checked" ' : '';
-			echo "<input class=\"check-field\" type=\"checkbox\" name=\"asocial_options[" . $key . "]\" " . $checked . "/>" . PHP_EOL;
+			echo "<input class=\"check-field\" type=\"checkbox\" value=\"on\" name=\"asocial_options[" . $key . "]\" " . $checked . "/>" . PHP_EOL;
 		}
 
 		function asocial_insert_where_setting()
