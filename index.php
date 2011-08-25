@@ -202,6 +202,8 @@
 
 		function asocial_insert_icons()
 		{
+			global $asocial_sites;
+
 			$asocial_options = get_option('asocial_options');
 
 			$icons = array();
