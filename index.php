@@ -221,17 +221,17 @@
 
 
 /*	5)	Add Boilerplate options to page as requested */
-		if ( !is_admin() && !is_feed() ) {
+		if ( is_single() ) {
 			
 			$asocial_options = get_option('asocial_options');
 
 			// insert icons
 			if ( isset($asocial_options['insert_where']) && $asocial_options['insert_where'] == 'before_post' ) {
-				add_filter('the_content', function($content) { return $content . asocial_insert_icons(); });
+				add_filter('the_content', function($content) { return $content . asocial_insert_icons() . 'asocialized'; });
 			}
 
 			if ( isset($asocial_options['insert_where']) && $asocial_options['insert_where'] == 'after_post' ) {
-				add_filter('the_content', function($content) { return asocial_insert_icons() . $content; });
+				add_filter('the_content', function($content) { return asocial_insert_icons() . $content . 'asocialized'; });
 			}
 
 		}
