@@ -200,6 +200,24 @@
 
 /*	4)	Create functions to add above elements to pages */
 
+		function asocial_generate_url($url, $post_ID)
+		{
+			$post = get_post( $post_ID );
+
+			$symbol = array(
+				'%the_title%',
+				'%the_permalink%',
+				'%the_excerpt%'
+			);
+			$value = array(
+				$post->post_title,
+				get_permalink($post_ID),
+				$post->post_excerpt,
+			);
+
+			return str_replace($symbol, $value, $url);
+		}
+
 		function asocial_insert_icons()
 		{
 			global $asocial_sites;
@@ -211,9 +229,9 @@
 				if ( isset($asocial_options[$key]) && $asocial_options[$key] == 'on' ) {
 					$icon_path = ASOCIAL_ICON_DIRECTORY . "/" . $asocial_options['icon_set'] . "/" . $asocial_options['icon_size'] . "px/" . $key . ".png";
 					if ( true || file_exists( $icon_path ) ) {
-						$icons[$key]  = "<span id=\"" . $key . "-as-icon\" class=\"as-icon\">";
+						$icons[$key] .= "<a id=\"" . $key . "-icon\" class=\"asocial-icon\" href=\"" . asocial_generate_url( $val['submit-url'] ) . "\" target=\"_blank\">";
 						$icons[$key] .= "<img src=\"" . $icon_path . "\" width=\"" . $asocial_options['icon_size'] . "\" height=\"" . $asocial_options['icon_size'] . "\" alt=\"" . $val['name'] . "\" />";
-						$icons[$key] .= "</span>" . PHP_EOL;
+						$icons[$key] .= "</a>";
 					}
 				}
 			}
@@ -223,12 +241,12 @@
 
 		function asocial_insert_icons_before_post($content)
 		{
-			return asocial_insert_icons() . $content . 'asocialized';
+			return asocial_insert_icons() . $content;
 		}
 
 		function asocial_insert_icons_after_post($content)
 		{
-			return $content . asocial_insert_icons() . 'asocialized';
+			return $content . asocial_insert_icons();
 		}
 
 
