@@ -218,7 +218,8 @@
 			foreach ( $asocial_sites as $key => $val ) {
 				if ( isset($asocial_options[$key]) && $asocial_options[$key] == 'on' ) {
 					$icon_path = ASOCIAL_ICON_DIRECTORY . "/" . $asocial_options['icon_set'] . "/" . $asocial_options['icon_size'] . "px/" . $key . ".png";
-					$icons[] .= "<a id=\"" . $key . "-icon\" class=\"asocial-icon\" href=\"" . asocial_generate_url( $val['submit-url'], $wp_query->post->ID ) . "\" alt=\"Share on " . $val['name'] . "\" target=\"_blank\">";
+					$url = asocial_generate_url( $val['submit-url'], $wp_query->post->ID );
+					$icons[] .= "<a id=\"" . $key . "-icon\" class=\"asocial-icon\" href=\"" . $url . "\" onclick=\"window.open('" . $url . "', '" . $val['name'] . "', 'toolbar=no,width=500,height=500'); return false;\" alt=\"Share on " . $val['name'] . "\" target=\"_blank\">";
 					$icons[] .= "<img src=\"" . $icon_path . "\" width=\"" . $asocial_options['icon_size'] . "\" height=\"" . $asocial_options['icon_size'] . "\" alt=\"" . $val['name'] . "\" />";
 					$icons[] .= "</a>";
 				}
