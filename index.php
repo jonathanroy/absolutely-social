@@ -210,12 +210,12 @@
 				'%the_excerpt%'
 			);
 			$value = array(
-				$post->post_title,
+				urlencode( $post->post_title ),
 				get_permalink($post_ID),
-				$post->post_excerpt,
+				urlencode( $post->post_excerpt ),
 			);
 
-			return urlencode( str_replace($symbol, $value, $url) );
+			return str_replace($symbol, $value, $url);
 		}
 
 		function asocial_insert_icons()
