@@ -163,12 +163,10 @@
 			$asocial_options = get_option('asocial_options');
 
 			echo "<select name=\"asocial_options[icon_size]\">";
-			foreach ( $icon_sets[$asocial_options['icon_set']]['sizes'] as $size ) {
+			foreach ( $asocial_icon_sets[$asocial_options['icon_set']]['sizes'] as $size ) {
 				echo "<option value=\"" . $size . "\"" . ( ( isset($asocial_options['icon_size']) && $asocial_options['icon_size'] == $size ) ? " selected=\"selected\"" : "" ) . ">" . $size . "px</option>";
 			}
 			echo "</select>" . PHP_EOL;
-
-			var_dump($icon_sets, $asocial_options['icon_set']);
 		}
 
 	//	callback fn for doctype
