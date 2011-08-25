@@ -208,7 +208,7 @@
 			foreach ( $asocial_sites as $key => $val ) {
 				if ( isset($asocial_options[$key]) && $asocial_options[$key] == 'on' ) {
 					$icon_path = AS_ICON_DIRECTORY . "/" . $asocial_options['icon_set'] . "/" . $asocial_options['icon_size'] . "px/" . $key . ".png";
-					if ( file_exists( $icon_path ) ) {
+					if ( true || file_exists( $icon_path ) ) {
 						$icons[$key]  = "<span id=\"" . $key . "-as-icon\" class=\"as-icon\">";
 						$icons[$key] .= "<img src=\"" . $icon_path . "\" width=\"" . $asocial_options['icon_size'] . "\" height=\"" . $asocial_options['icon_size'] . "\" alt=\"" . $val['name'] . "\" />";
 						$icons[$key] .= "</span>" . PHP_EOL;
