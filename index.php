@@ -121,7 +121,6 @@
 
 				foreach ( $asocial_sites as $key => $val ) {
 					if ( in_array($key, $asocial_icon_sets[$asocial_options['icon_set']]['available-icons']) ) {
-						echo $key;
 						add_settings_field($key, $val['name'], 'asocial_site_setting', 'asocial-admin', 'main_section', $key);
 					}
 				}
@@ -173,8 +172,6 @@
 	//	callback fn for doctype
 		function asocial_site_setting($key)
 		{
-			var_dump($key);
-
 			global $asocial_sites;
 
 			$asocial_options = get_option('asocial_options');
