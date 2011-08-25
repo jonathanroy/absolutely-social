@@ -197,10 +197,16 @@
 		{
 			$options = get_option('plugin_options');
 
+			$insert_where_options = array(
+				'0' => 'Do not insert automatically',
+				'before_post' => 'Before posts',
+				'after_post' => 'After posts'
+			);
+
 			echo "<select name=\"plugin_options[insert_where]\">";
-			echo "<option value=\"0\">Don't insert automatically</option>";
-			echo "<option value=\"before_post\">Before post</option>";
-			echo "<option value=\"after_post\">After post</option>";
+			foreach ( $insert_where_options as $key => $val ) {
+				echo "<option value=\"" . $key . "\"" . ( ( isset($options['insert_where']) && $options['insert_where'] == $key ) ? " selected=\"selected\"" : "" ) . ">" . $val . "</option>";
+			}
 			echo "</select>" . PHP_EOL;
 		}
 
