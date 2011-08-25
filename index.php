@@ -117,6 +117,8 @@
 
 			if ( isset($asocial_options['icon_set']) ) {
 
+				add_settings_field('insert_where', 'Insert automatically?', 'asocial_insert_where_setting', 'asocial-admin', 'main_section');
+
 				add_settings_field('icon_size', 'Choose icon size:', 'asocial_icon_size_setting', 'asocial-admin', 'main_section');
 
 				foreach ( $asocial_sites as $key => $val ) {
@@ -126,8 +128,6 @@
 				}
 
 			}
-
-			add_settings_field('insert_where', 'Insert automatically?', 'asocial_insert_where_setting', 'asocial-admin', 'main_section');
 			
 		}
 		add_action('admin_init', 'asocial_register_and_build_fields');
