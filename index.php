@@ -119,7 +119,7 @@
 
 				add_settings_field('icon_size', 'Choose icon size:', 'asocial_icon_size_setting', 'asocial-admin', 'main_section');
 
-				foreach ( $asocialsites as $key => $val ) {
+				foreach ( $asocial_sites as $key => $val ) {
 					if ( in_array($key, $asocial_icon_sets[$asocial_options['icon_set']]['available-icons']) ) {
 						echo $key;
 						add_settings_field($key, $val['name'], 'asocial_site_setting', 'asocial-admin', 'main_section', $key);
