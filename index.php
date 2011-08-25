@@ -56,6 +56,10 @@
 	);
 
 /*
+	Get Absolutely Social Options */
+	$asocial_options = get_option('asocial_options');
+
+/*
  	Begin Absolutely Social Admin panel.
 
 	There are essentially 5 sections to this:
@@ -105,9 +109,7 @@
 	//	Register form elements
 		function asocial_register_and_build_fields()
 		{
-			global $asocial_sites, $asocial_icon_sets;
-
-			$asocial_options = get_option('asocial_options');
+			global $asocial_options, $asocial_sites, $asocial_icon_sets;
 
 			register_setting('asocial_options', 'asocial_options', 'asocial_validate_setting');
 			
@@ -145,9 +147,7 @@
 
 		function asocial_icon_set_setting()
 		{
-			global $asocial_icon_sets;
-
-			$asocial_options = get_option('asocial_options');
+			global $asocial_options, $asocial_icon_sets;
 
 			echo "<select name=\"asocial_options[icon_set]\">";
 			foreach ( $asocial_icon_sets as $key => $val ) {
@@ -158,9 +158,7 @@
 
 		function asocial_icon_size_setting()
 		{
-			global $asocial_icon_sets;
-
-			$asocial_options = get_option('asocial_options');
+			global $asocial_options, $asocial_icon_sets;
 
 			echo "<select name=\"asocial_options[icon_size]\">";
 			foreach ( $asocial_icon_sets[$asocial_options['icon_set']]['sizes'] as $size ) {
@@ -172,9 +170,7 @@
 	//	callback fn for doctype
 		function asocial_site_setting($key)
 		{
-			global $asocial_sites;
-
-			$asocial_options = get_option('asocial_options');
+			global $asocial_options, $asocial_sites;
 			
 			$checked = ( isset($asocial_options[$key]) && $asocial_options[$key] ) ? 'checked="checked" ' : '';
 			echo "<input class=\"check-field\" type=\"checkbox\" value=\"on\" name=\"asocial_options[" . $key . "]\" " . $checked . "/>" . PHP_EOL;
@@ -182,7 +178,7 @@
 
 		function asocial_insert_where_setting()
 		{
-			$asocial_options = get_option('asocial_options');
+			global $asocial_options;
 
 			$asocial_insert_where_options = array(
 				'0' => 'Do not insert automatically',
@@ -220,9 +216,7 @@
 
 		function asocial_insert_icons()
 		{
-			global $asocial_sites, $wp_query;
-
-			$asocial_options = get_option('asocial_options');
+			global $asocial_options, $asocial_sites, $wp_query;
 
 			$icons = array();
 			foreach ( $asocial_sites as $key => $val ) {
@@ -250,23 +244,16 @@
 		}
 
 
-add_filter('the_content', 'asocial_insert_icons_after_post');
-
 /*	5)	Add Boilerplate options to page as requested */
-		if ( is_single() ) {
-			
-			$asocial_options = get_option('asocial_options');
 
-			// insert icons
-			if ( isset($asocial_options['insert_where']) && $asocial_options['insert_where'] ) {
+		// insert icons
+		if ( isset($asocial_options['insert_where']) && $asocial_options['insert_where'] ) {
 
-				if ( $asocial_options['insert_where'] == 'before_post' )
-					add_filter('the_content', 'asocial_insert_icons_before_post');
+			if ( $asocial_options['insert_where'] == 'before_post' )
+				add_filter('the_content', 'asocial_insert_icons_before_post');
 
-				if ( $asocial_options['insert_where'] == 'after_post' )
-					add_filter('the_content', 'asocial_insert_icons_after_post');
-
-			}
+			if ( $asocial_options['insert_where'] == 'after_post' )
+				add_filter('the_content', 'asocial_insert_icons_after_post');
 
 		}
 
