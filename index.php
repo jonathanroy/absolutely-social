@@ -229,9 +229,9 @@
 				if ( isset($asocial_options[$key]) && $asocial_options[$key] == 'on' ) {
 					$icon_path = ASOCIAL_ICON_DIRECTORY . "/" . $asocial_options['icon_set'] . "/" . $asocial_options['icon_size'] . "px/" . $key . ".png";
 					if ( true || file_exists( $icon_path ) ) {
-						$icons[$key] .= "<a id=\"" . $key . "-icon\" class=\"asocial-icon\" href=\"" . asocial_generate_url( $val['submit-url'], $wp_query->post->ID ) . "\" target=\"_blank\">";
-						$icons[$key] .= "<img src=\"" . $icon_path . "\" width=\"" . $asocial_options['icon_size'] . "\" height=\"" . $asocial_options['icon_size'] . "\" alt=\"" . $val['name'] . "\" />";
-						$icons[$key] .= "</a>";
+						$icons[] .= "<a id=\"" . $key . "-icon\" class=\"asocial-icon\" href=\"" . asocial_generate_url( $val['submit-url'], $wp_query->post->ID ) . "\" target=\"_blank\">";
+						$icons[] .= "<img src=\"" . $icon_path . "\" width=\"" . $asocial_options['icon_size'] . "\" height=\"" . $asocial_options['icon_size'] . "\" alt=\"" . $val['name'] . "\" />";
+						$icons[] .= "</a>";
 					}
 				}
 			}
