@@ -59,6 +59,12 @@
 	Get Absolutely Social Options */
 	$asocial_options = get_option('asocial_options');
 
+	if ( !isset( $asocial_options['icon_set'] ) )
+		$asocial_options['icon_set'] = key( $asocial_icon_sets );
+
+	if ( !isset( $asocial_options['icon_size'] ) )
+		$asocial_options['icon_size'] = $asocial_icon_sets[$asocial_options['icon_set']]['sizes'][0];
+
 /*
  	Begin Absolutely Social Admin panel.
 
@@ -196,10 +202,14 @@
 			return str_replace($symbol, $value, $url);
 		}
 
-		function asocial_get_icon($site_key)
+		function asocial_get_icon($site_key, $icon_set = null, $icon_size = null)
 		{
 			global $asocial_options, $asocial_sites, $asocial_icon_sets;
-			$icon_path = ASOCIAL_ICON_DIRECTORY . "/" . $asocial_options['icon_set'] . "/" . $asocial_options['icon_size'] . "px/" . $site_key . ".png";
+
+			$icon_set = isset($icon_set) ? $icon_set : $asocial_options['icon_set'];
+			$icon_size = isset($icon_size) ? $icon_size : $asocial_options['icon_size'];
+
+			$icon_path = ASOCIAL_ICON_DIRECTORY . "/" . $icon_set . "/" . $asocial_options['icon_size'] . "px/" . $site_key . ".png";
 			return "<img src=\"" . $icon_path . "\" width=\"" . $asocial_options['icon_size'] . "\" height=\"" . $asocial_options['icon_size'] . "\" alt=\"" . $asocial_sites[$asocial_options['icon_set']]['name'] . "\" />";
 		}
 
