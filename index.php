@@ -240,8 +240,10 @@
 
 /*	5)	Add Boilerplate options to page as requested */
 
-		if ( $asocial_options['tumblr'] )
-				wp_enqueue_script('tumblr_share', 'http://platform.tumblr.com/v1/share.js');
+		if ( !is_admin() ) {
+			if ( $asocial_options['tumblr'] )
+					wp_enqueue_script('tumblr_share', 'http://platform.tumblr.com/v1/share.js');
+		}
 
 		// insert icons
 		if ( isset($asocial_options['insert_where']) && $asocial_options['insert_where'] ) {
