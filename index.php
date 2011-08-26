@@ -139,6 +139,7 @@
 			);
 
 			foreach ( $asocial_insert_where_options as $key => $val ) {
+				$checked = ( isset($asocial_options[$key]) && $asocial_options[$key] ) ? 'checked="checked" ' : '';
 				echo "<p><input class=\"check-field\" type=\"checkbox\" value=\"on\" name=\"asocial_options[" . $key . "]\" " . $checked . "/> " . $val . "</p>" . PHP_EOL;
 			}
 		}
