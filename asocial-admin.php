@@ -22,6 +22,7 @@
 				<?php do_settings_sections('asocial-admin'); ?>
 				<p class="submit"><input name="Submit" type="submit" class="button-primary" value="<?php esc_attr_e('Save Changes'); ?>" /></p>
 			</form>
+			<?php var_dump($asocial_options); ?>
 		</div>
 	<?php
 	}
@@ -33,11 +34,8 @@
 		global $asocial_icons;
 
 		register_setting('asocial_options', 'asocial_options', 'asocial_validate_setting');
-
 		add_settings_section('main_section', '', 'section_cb', 'asocial-admin');
-
 		add_settings_field('insert_where', 'Insert the icons:', 'asocial_insert_where_setting', 'asocial-admin', 'main_section');
-
 		foreach ( $asocial_icons as $site_key => $val ) {
 			add_settings_field($site_key, $asocial_icons[$site_key]['name'], 'asocial_sites_setting', 'asocial-admin', 'main_section', $site_key);
 		}
@@ -64,9 +62,9 @@
 			'insert_after_post' => 'After posts'
 		);
 
-		foreach ( $asocial_insert_where_options as $key => $val ) {
-			$checked = ( isset($asocial_options[$key]) && $asocial_options[$key] ) ? 'checked="checked" ' : '';
-			echo "<p><input class=\"check-field\" type=\"checkbox\" value=\"on\" name=\"asocial_options[" . $key . "]\" " . $checked . "/> " . $val . "</p>" . PHP_EOL;
+		foreach ( $asocial_insert_where_options as $option_key => $option_val ) {
+			$checked = ( isset($asocial_options[$option_key]) && $asocial_options[$option_key] ) ? 'checked="checked" ' : '';
+			echo "<p><input class=\"check-field\" type=\"checkbox\" value=\"on\" name=\"asocial_options[" . $option_key . "]\" " . $checked . "/> " . $option_val . "</p>" . PHP_EOL;
 		}
 	}
 
