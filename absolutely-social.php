@@ -58,7 +58,7 @@
 
 		if ( !isset( $icon_html ) || strlen( $icon_html ) == 0 ) return false;
 
-		$icon_has_js = ( count( $asocial_icons[$site_key]['javascript'] ) > 0 ) ? true : false;
+		$icon_has_js = ( isset( $asocial_icons[$site_key]['javascript']['src'] ) && strlen( $asocial_icons[$site_key]['javascript']['src'] ) > 0 ) ? true : false;
 
 		if ( $icon_has_js ) {
 			$icon_js_src = $asocial_icons[$site_key]['javascript']['src'];
