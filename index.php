@@ -208,7 +208,7 @@
 			$icon_size = isset($icon_size) ? $icon_size : $asocial_options['icon_size'];
 
 			$icon_path = ASOCIAL_ICON_DIRECTORY . "/" . $icon_set . "/" . $icon_size . "px/" . $site_key . ".png";
-			return "<img src=\"" . $icon_path . "\" width=\"" . $icon_size . "\" height=\"" . $icon_size . "\" alt=\"" . $asocial_sites[$asocial_options['icon_set']]['name'] . "\" />";
+			return "<img src=\"" . $icon_path . "\" width=\"" . $icon_size . "\" height=\"" . $icon_size . "\" alt=\"" . $asocial_sites[$site_key]['name'] . "\" />";
 		}
 
 		function asocial_insert_icons()
