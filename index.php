@@ -105,7 +105,7 @@
 
 			register_setting('asocial_options', 'asocial_options', 'asocial_validate_setting');
 
-			add_settings_field('insert_where', 'Insert automatically?', 'asocial_insert_where_setting', 'asocial-admin', 'main_section');
+			add_settings_field('insert_where', 'Insert the icons:', 'asocial_insert_where_setting', 'asocial-admin', 'main_section');
 			add_settings_section('main_section', '', 'section_cb', 'asocial-admin');
 			add_settings_field('icon_set', 'Choose icon set:', 'asocial_icon_set_setting', 'asocial-admin', 'main_section');
 			add_settings_field('icon_size', 'Choose icon size:', 'asocial_icon_size_setting', 'asocial-admin', 'main_section');
@@ -128,6 +128,19 @@
 
 	//	in case you need it...
 		function section_cb() {}
+
+		function asocial_insert_where_setting()
+		{
+			global $asocial_options;
+
+			$asocial_insert_where_options = array(
+				'insert_before_post' => 'Before posts',
+				'insert_after_post' => 'After posts'
+			);
+
+			foreach ( $asocial_insert_where_options as $key => $val ) {
+				echo "<p><input class=\"check-field\" type=\"checkbox\" value=\"on\" name=\"asocial_options[" . $key . "]\" " . $checked . "/> " . $val . "</p>" . PHP_EOL;
+		}
 
 		function asocial_icon_set_setting()
 		{
@@ -158,23 +171,6 @@
 			
 			$checked = ( isset($asocial_options[$key]) && $asocial_options[$key] ) ? 'checked="checked" ' : '';
 			echo "<input class=\"check-field\" type=\"checkbox\" value=\"on\" name=\"asocial_options[" . $key . "]\" " . $checked . "/>" . PHP_EOL;
-		}
-
-		function asocial_insert_where_setting()
-		{
-			global $asocial_options;
-
-			$asocial_insert_where_options = array(
-				'0' => 'Do not insert automatically',
-				'before_post' => 'Before posts',
-				'after_post' => 'After posts'
-			);
-
-			echo "<select name=\"asocial_options[insert_where]\">";
-			foreach ( $asocial_insert_where_options as $key => $val ) {
-				echo "<option value=\"" . $key . "\"" . ( ( isset($asocial_options['insert_where']) && $asocial_options['insert_where'] == $key ) ? " selected=\"selected\"" : "" ) . ">" . $val . "</option>";
-			}
-			echo "</select>" . PHP_EOL;
 		}
 
 
@@ -235,15 +231,11 @@
 		}
 
 		// insert icons
-		if ( isset($asocial_options['insert_where']) && $asocial_options['insert_where'] ) {
+		if ( isset( $asocial_options['insert_before_post'] ) && $asocial_options['insert_before_post'] )
+			add_filter('the_content', 'asocial_insert_icons_before_post');
 
-			if ( $asocial_options['insert_where'] == 'before_post' )
-				add_filter('the_content', 'asocial_insert_icons_before_post');
-
-			if ( $asocial_options['insert_where'] == 'after_post' )
-				add_filter('the_content', 'asocial_insert_icons_after_post');
-
-		}
+		if ( isset( $asocial_options['insert_after_post'] ) && $asocial_options['insert_after_post'] )
+			add_filter('the_content', 'asocial_insert_icons_after_post');
 
 
 /*	End customization for Absolutely Social */
