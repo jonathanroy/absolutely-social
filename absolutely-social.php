@@ -42,7 +42,7 @@
 	{
 		global $asocial_options, $asocial_icons;
 
-		$icon_format = !is_null($icon_format) ? $icon_format : $asocial_options[$site_key . '-format'];
+		$icon_format = !is_null($icon_format) ? $icon_format : $asocial_options[$site_key];
 
 		$icon_js_src = $asocial_icons[$site_key]['javascript']['src'];
 		$icon_js_loc = $asocial_icons[$site_key]['javascript']['location'];
@@ -50,12 +50,14 @@
 
 		$icon_html = asocial_dynamic_html( $asocial_icons[$site_key]['formats'][$icon_format]['html'] );
 
+		if ( !isset( $icon_html ) || strlen( $icon_html ) == 0 ) return false;
+
 		wp_enqueue_script( $site_key . '_script', $icon_js_src, array(), false, $icon_js_in_footer );
 
 		return $icon_html;
 	}
 
-	function asocial_insert_icons()
+	function asocial_insert_icons($icon_format = null)
 	{
 		global $asocial_options, $asocial_icons, $wp_query;
 
