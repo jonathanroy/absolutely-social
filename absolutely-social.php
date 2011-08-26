@@ -15,14 +15,13 @@
 	1. Define plug-in variables & constants */
 
 	define('ASOCIAL_PLUGIN_URL', WP_PLUGIN_URL.'/absolutely-social');
-	define('ASOCIAL_ICON_DIRECTORY', ASOCIAL_PLUGIN_URL . '/icons');
 
 	$asocial_options = get_option('asocial_options');
 
 /*
-	2. Include icons info */
+	2. Include share buttons */
 	
-	require_once("asocial-icons.php");
+	require_once("asocial-buttons.php");
 
 /*
 	3. Include admin section */
@@ -46,35 +45,35 @@
 		return str_replace($symbol, $value, $url);
 	}
 
-	function asocial_get_icon($site_key, $icon_format = null)
+	function asocial_get_button($site_key, $button_format = null)
 	{
-		global $asocial_options, $asocial_icons;
+		global $asocial_options, $asocial_buttons;
 		global $wp_query;
 
-		$icon_format = !is_null($icon_format) ? $icon_format : $asocial_options[$site_key];
+		$button_format = !is_null($button_format) ? $button_format : $asocial_options[$site_key];
 
-		$icon_html = $asocial_icons[$site_key]['formats'][$icon_format]['html'];
+		$icon_html = $asocial_buttons[$site_key]['formats'][$button_format]['html'];
 		$icon_html = asocial_dynamic_html( $icon_html, $wp_query->post->ID );
 
-		$icon_has_js = ( isset( $asocial_icons[$site_key]['js'] ) && strlen( $asocial_icons[$site_key]['js'] ) > 0 ) ? true : false;
+		$icon_has_js = ( isset( $asocial_buttons[$site_key]['js'] ) && strlen( $asocial_buttons[$site_key]['js'] ) > 0 ) ? true : false;
 		if ( $icon_has_js ) {
-			$icon_js = $asocial_icons[$site_key]['js'];
+			$icon_js = $asocial_buttons[$site_key]['js'];
 			$icon_html .= '<script type="text/javascript" src="' . $icon_js . '"></script>';
 		}
 
-		$icon_html = '<div class="asocial-icon ' . $site_key . '-icon">' . $icon_html . '</div>';
+		$icon_html = '<div class="asocial-button ' . $site_key . '-icon">' . $icon_html . '</div>';
 
 		return $icon_html;
 	}
 
-	function asocial_insert_icons($icon_format = null)
+	function asocial_insert_buttons($button_format = null)
 	{
-		global $asocial_options, $asocial_icons, $wp_query;
+		global $asocial_options, $asocial_buttons, $wp_query;
 
-		$icons_html = "<div class=\"asocial-icons\">";
-		foreach ( $asocial_icons as $site_key => $val ) {
+		$icons_html = "<div class=\"asocial-buttons\">";
+		foreach ( $asocial_buttons as $site_key => $val ) {
 			if ( isset( $asocial_options[$site_key] ) && $asocial_options[$site_key] != 'off' ) {
-				$icons_html .= asocial_get_icon( $site_key );
+				$icons_html .= asocial_get_button( $site_key );
 			}
 		}
 		$icons_html .= "</div>";
@@ -83,14 +82,14 @@
 	}
 
 
-	function asocial_insert_icons_before_post($content)
+	function asocial_insert_buttons_before_post($content)
 	{
-		return asocial_insert_icons() . $content;
+		return asocial_insert_buttons() . $content;
 	}
 
-	function asocial_insert_icons_after_post($content)
+	function asocial_insert_buttons_after_post($content)
 	{
-		return $content . asocial_insert_icons();
+		return $content . asocial_insert_buttons();
 	}
 
 
@@ -99,10 +98,10 @@
 
 	// insert icons
 	if ( isset( $asocial_options['insert_before_post'] ) && $asocial_options['insert_before_post'] )
-		add_filter('the_content', 'asocial_insert_icons_before_post');
+		add_filter('the_content', 'asocial_insert_buttons_before_post');
 
 	if ( isset( $asocial_options['insert_after_post'] ) && $asocial_options['insert_after_post'] )
-		add_filter('the_content', 'asocial_insert_icons_after_post');
+		add_filter('the_content', 'asocial_insert_buttons_after_post');
 
 
 /*	End customization for Absolutely Social */

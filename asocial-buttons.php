@@ -1,8 +1,8 @@
 <?php
 
 /*
-	Define Absolutely Social Icons */
-	$asocial_icons = array(
+	Define Absolutely Social Buttons */
+	$asocial_buttons = array(
 		'gplus' => array(
 			'name' => 'Google+',
 			'js' => 'https://apis.google.com/js/plusone.js',

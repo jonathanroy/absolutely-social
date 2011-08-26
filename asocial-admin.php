@@ -1,6 +1,6 @@
 <?php
 
-	global $asocial_options, $asocial_icons;
+	global $asocial_options, $asocial_buttons;
 
 //	Add option if in Admin Page
 	function asocial_create_admin_page()
@@ -32,13 +32,13 @@
 //	Register form elements
 	function asocial_register_and_build_fields()
 	{
-		global $asocial_icons;
+		global $asocial_buttons;
 
 		register_setting('asocial_options', 'asocial_options', 'asocial_validate_setting');
 		add_settings_section('main_section', '', 'section_cb', 'asocial-admin');
-		add_settings_field('insert_where', 'Insert the icons:', 'asocial_insert_where_setting', 'asocial-admin', 'main_section');
-		foreach ( $asocial_icons as $site_key => $val ) {
-			add_settings_field($site_key, $asocial_icons[$site_key]['name'], 'asocial_sites_setting', 'asocial-admin', 'main_section', $site_key);
+		add_settings_field('insert_where', 'Insert the buttons:', 'asocial_insert_where_setting', 'asocial-admin', 'main_section');
+		foreach ( $asocial_buttons as $site_key => $val ) {
+			add_settings_field($site_key, $asocial_buttons[$site_key]['name'], 'asocial_sites_setting', 'asocial-admin', 'main_section', $site_key);
 		}
 	}
 	add_action('admin_init', 'asocial_register_and_build_fields');
@@ -72,11 +72,11 @@
 //	callback fn for doctype
 	function asocial_sites_setting($site_key)
 	{
-		global $asocial_options, $asocial_icons;
+		global $asocial_options, $asocial_buttons;
 
 		echo "<select name=\"asocial_options[" . $site_key . "]\">";
 		echo "<option value=\"off\">Inactive</option>";
-		foreach ( $asocial_icons[$site_key]['formats'] as $format_key => $format ) {
+		foreach ( $asocial_buttons[$site_key]['formats'] as $format_key => $format ) {
 			$selected = ( isset( $asocial_options[$site_key] ) && $asocial_options[$site_key] == $format_key ) ? ' selected="selected"' : '';
 			echo "<option value=\"" . $format_key . "\"" . $selected . ">" . $format['name'] . "</option>";
 		}
