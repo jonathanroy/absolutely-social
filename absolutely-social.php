@@ -53,16 +53,19 @@
 
 		$icon_format = !is_null($icon_format) ? $icon_format : $asocial_options[$site_key];
 
-		$icon_js_src = $asocial_icons[$site_key]['javascript']['src'];
-		$icon_js_loc = $asocial_icons[$site_key]['javascript']['location'];
-		$icon_js_in_footer = ( $icon_js_loc == 'footer' ) ? true : false;
-
 		$icon_html = $asocial_icons[$site_key]['formats'][$icon_format]['html'];
 		$icon_html = asocial_dynamic_html( $icon_html, $wp_query->post->ID );
 
 		if ( !isset( $icon_html ) || strlen( $icon_html ) == 0 ) return false;
 
-		wp_enqueue_script( $site_key . '_script', $icon_js_src, array(), false, $icon_js_in_footer );
+		$icon_has_js = ( count( $asocial_icons[$site_key]['javascript'] ) > 0 ) ? true : false;
+
+		if ( $icon_has_js ) {
+			$icon_js_src = $asocial_icons[$site_key]['javascript']['src'];
+			$icon_js_loc = $asocial_icons[$site_key]['javascript']['location'];
+			$icon_js_in_footer = ( $icon_js_loc == 'footer' ) ? true : false;
+			wp_enqueue_script( $site_key . '_script', $icon_js_src, array(), false, $icon_js_in_footer );
+		}
 
 		return $icon_html;
 	}
