@@ -61,7 +61,7 @@
 			$icon_html .= '<script type="text/javascript" src="' . $icon_js . '"></script>';
 		}
 
-		$icon_html = '<span class="asocial-button ' . $site_key . '-icon">' . $icon_html . '</span>';
+		$icon_html = '<span class="asocial-button ' . $site_key . '-icon">' . $icon_html . '</span> ';
 
 		return $icon_html;
 	}
