@@ -38,7 +38,7 @@
 
 		add_settings_field('insert_where', 'Insert the icons:', 'asocial_insert_where_setting', 'asocial-admin', 'main_section');
 
-		foreach ( $social_icons as $site_key => $val ) {
+		foreach ( $asocial_icons as $site_key => $val ) {
 			add_settings_field($site_key, $asocial_icons[$site_key]['name'], 'asocial_sites_setting', 'asocial-admin', 'main_section', $site_key);
 		}
 	}
