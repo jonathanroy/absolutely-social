@@ -23,7 +23,7 @@
 				<?php do_settings_sections('asocial-admin'); ?>
 				<p class="submit"><input name="Submit" type="submit" class="button-primary" value="<?php esc_attr_e('Save Changes'); ?>" /></p>
 			</form>
-			<?php var_dump($asocial_options, $_GET); ?>
+			<?php var_dump($asocial_options, $_POST); ?>
 		</div>
 	<?php
 	}
