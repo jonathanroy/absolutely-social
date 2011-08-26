@@ -62,7 +62,9 @@
 			$icon_html .= '<script type="text/javascript" src="' . $icon_js . '"></script>';
 		}
 
-		return ( isset( $icon_html ) && strlen( $icon_html ) > 0 ) ? $icon_html : false;
+		$icon_html = '<div class="asocial-icon ' . $site_key . '-icon">' . $icon_html . '</div>';
+
+		return $icon_html;
 	}
 
 	function asocial_insert_icons($icon_format = null)
