@@ -115,10 +115,7 @@
 			add_settings_section('main_section', '', 'section_cb', 'asocial-admin');
 			add_settings_field('icon_set', 'Choose icon set:', 'asocial_icon_set_setting', 'asocial-admin', 'main_section');
 			add_settings_field('icon_size', 'Choose icon size:', 'asocial_icon_size_setting', 'asocial-admin', 'main_section');
-			foreach ( $asocial_sites as $key => $val ) {
-				if ( in_array($key, $asocial_icon_sets[$asocial_options['icon_set']]['available-icons']) ) {
-					add_settings_field($key, $val['name'], 'asocial_site_setting', 'asocial-admin', 'main_section', $key);
-				}
+			add_settings_field('sites', 'Select social sites:', 'asocial_sites_setting', 'asocial-admin', 'main_section');
 			}
 			
 		}
@@ -173,12 +170,16 @@
 		}
 
 	//	callback fn for doctype
-		function asocial_site_setting($key)
+		function asocial_sites_setting($key)
 		{
 			global $asocial_options, $asocial_sites;
-			
-			$checked = ( isset($asocial_options[$key]) && $asocial_options[$key] ) ? 'checked="checked" ' : '';
-			echo "<input class=\"check-field\" type=\"checkbox\" value=\"on\" name=\"asocial_options[" . $key . "]\" " . $checked . "/>" . PHP_EOL;
+
+			foreach ( $asocial_sites as $key => $val ) {
+				if ( in_array($key, $asocial_icon_sets[$asocial_options['icon_set']]['available-icons']) ) {
+					$checked = ( isset($asocial_options[$key]) && $asocial_options[$key] ) ? 'checked="checked" ' : '';
+					echo "<p><input class=\"check-field\" type=\"checkbox\" value=\"on\" name=\"asocial_options[" . $key . "]\" " . $checked . "/>" . $val['name'] . "</p>" . PHP_EOL;
+				}
+			}
 		}
 
 
@@ -209,8 +210,8 @@
 			$icon_set = isset($icon_set) ? $icon_set : $asocial_options['icon_set'];
 			$icon_size = isset($icon_size) ? $icon_size : $asocial_options['icon_size'];
 
-			$icon_path = ASOCIAL_ICON_DIRECTORY . "/" . $icon_set . "/" . $asocial_options['icon_size'] . "px/" . $site_key . ".png";
-			return "<img src=\"" . $icon_path . "\" width=\"" . $asocial_options['icon_size'] . "\" height=\"" . $asocial_options['icon_size'] . "\" alt=\"" . $asocial_sites[$asocial_options['icon_set']]['name'] . "\" />";
+			$icon_path = ASOCIAL_ICON_DIRECTORY . "/" . $icon_set . "/" . $icon_size . "px/" . $site_key . ".png";
+			return "<img src=\"" . $icon_path . "\" width=\"" . $icon_size . "\" height=\"" . $icon_size . "\" alt=\"" . $asocial_sites[$asocial_options['icon_set']]['name'] . "\" />";
 		}
 
 		function asocial_insert_icons()
