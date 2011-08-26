@@ -169,7 +169,7 @@
 	//	callback fn for doctype
 		function asocial_sites_setting($key)
 		{
-			global $asocial_options, $asocial_sites;
+			global $asocial_options, $asocial_sites, $asocial_icon_sets;
 
 			foreach ( $asocial_sites as $key => $val ) {
 				if ( in_array($key, $asocial_icon_sets[$asocial_options['icon_set']]['available-icons']) ) {
