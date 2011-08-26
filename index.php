@@ -214,6 +214,9 @@
 		{
 			global $asocial_options, $asocial_sites, $wp_query;
 
+			if ( $asocial_options['tumblr'] )
+				wp_enqueue_script('tumblr_share', 'http://platform.tumblr.com/v1/share.js');
+
 			$icons = array();
 			foreach ( $asocial_sites as $key => $val ) {
 				if ( isset($asocial_options[$key]) && $asocial_options[$key] == 'on' ) {
