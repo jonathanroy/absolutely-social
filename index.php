@@ -174,7 +174,7 @@
 			foreach ( $asocial_sites as $key => $val ) {
 				if ( in_array($key, $asocial_icon_sets[$asocial_options['icon_set']]['available-icons']) ) {
 					$checked = ( isset($asocial_options[$key]) && $asocial_options[$key] ) ? 'checked="checked" ' : '';
-					echo "<p><input class=\"check-field\" type=\"checkbox\" value=\"on\" name=\"asocial_options[" . $key . "]\" " . $checked . "/>" . $val['name'] . "</p>" . PHP_EOL;
+					echo "<p><input class=\"check-field\" type=\"checkbox\" value=\"on\" name=\"asocial_options[" . $key . "]\" " . $checked . "/> " . $val['name'] . "</p>" . PHP_EOL;
 				}
 			}
 		}
