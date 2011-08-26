@@ -95,15 +95,8 @@
 		<?php
 		}
 
-/*	2)	Add Admin Page CSS if on the Admin Page */
 
-		function asocial_admin_head()
-		{
-			echo '<link rel="stylesheet" href="' . ASOCIAL_PLUGIN_URL . '/admin-style.css" />'.PHP_EOL;
-		}
-		add_action('admin_head', 'asocial_admin_head');
-
-/*	3)	Add "Boilerplate Admin" Page options */
+/*	3)	Add "Absolutely Social Admin" Page options */
 
 	//	Register form elements
 		function asocial_register_and_build_fields()
