@@ -196,6 +196,13 @@
 			return str_replace($symbol, $value, $url);
 		}
 
+		function asocial_get_icon($site_key)
+		{
+			global $asocial_options, $asocial_sites, $asocial_icon_sets;
+			$icon_path = ASOCIAL_ICON_DIRECTORY . "/" . $asocial_options['icon_set'] . "/" . $asocial_options['icon_size'] . "px/" . $site_key . ".png";
+			return "<img src=\"" . $icon_path . "\" width=\"" . $asocial_options['icon_size'] . "\" height=\"" . $asocial_options['icon_size'] . "\" alt=\"" . $asocial_sites[$asocial_options['icon_set']]['name'] . "\" />";
+		}
+
 		function asocial_insert_icons()
 		{
 			global $asocial_options, $asocial_sites, $wp_query;
@@ -203,10 +210,9 @@
 			$icons = array();
 			foreach ( $asocial_sites as $key => $val ) {
 				if ( isset($asocial_options[$key]) && $asocial_options[$key] == 'on' ) {
-					$icon_path = ASOCIAL_ICON_DIRECTORY . "/" . $asocial_options['icon_set'] . "/" . $asocial_options['icon_size'] . "px/" . $key . ".png";
 					$url = asocial_generate_url( $val['submit-url'], $wp_query->post->ID );
 					$icons[] .= "<a id=\"" . $key . "-icon\" class=\"asocial-icon\" href=\"" . $url . "\"" . ( ( $val['method'] == 'popup' ) ? " onclick=\"window.open('" . $url . "', '" . $val['name'] . "', 'toolbar=no,width=500,height=500'); return false;\"" : "" ) . " title=\"Share on " . $val['name'] . "\" target=\"_blank\">";
-					$icons[] .= "<img src=\"" . $icon_path . "\" width=\"" . $asocial_options['icon_size'] . "\" height=\"" . $asocial_options['icon_size'] . "\" alt=\"" . $val['name'] . "\" />";
+					$icons[] .= asocial_get_icon( $key );
 					$icons[] .= "</a> ";
 				}
 			}
