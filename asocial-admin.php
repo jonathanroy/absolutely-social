@@ -75,7 +75,7 @@
 	{
 		global $asocial_options, $asocial_icons;
 
-		echo "<select name=\"" . $site_key . "\">";
+		echo "<select name=\"asocial_options[" . $site_key . "]\">";
 		echo "<option value=\"off\">Inactive</option>";
 		foreach ( $asocial_icons[$site_key]['formats'] as $format_key => $format ) {
 			$selected = ( isset( $asocial_options[$site_key] ) && $asocial_options[$site_key] == $format_key ) ? ' selected="selected"' : '';
