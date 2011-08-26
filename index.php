@@ -209,7 +209,7 @@
 					$url = asocial_generate_url( $val['submit-url'], $wp_query->post->ID );
 					$icons[] .= "<a id=\"" . $key . "-icon\" class=\"asocial-icon\" href=\"" . $url . "\" onclick=\"window.open('" . $url . "', '" . $val['name'] . "', 'toolbar=no,width=500,height=500'); return false;\" title=\"Share on " . $val['name'] . "\" target=\"_blank\">";
 					$icons[] .= "<img src=\"" . $icon_path . "\" width=\"" . $asocial_options['icon_size'] . "\" height=\"" . $asocial_options['icon_size'] . "\" alt=\"" . $val['name'] . "\" />";
-					$icons[] .= "</a>";
+					$icons[] .= "</a> ";
 				}
 			}
 			return "<div class=\"asocial-icons\">" . implode("", $icons) . "</div>" . PHP_EOL;
