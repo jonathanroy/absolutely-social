@@ -17,7 +17,7 @@
 	define('ASOCIAL_PLUGIN_URL', WP_PLUGIN_URL.'/absolutely-social');
 	define('ASOCIAL_ICON_DIRECTORY', ASOCIAL_PLUGIN_URL . '/icons');
 
-	$asocial_options = get_options('asocial_options');
+	$asocial_options = get_option('asocial_options');
 
 /*
 	2. Include icons info */
