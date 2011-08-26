@@ -65,6 +65,7 @@
 			$icon_js_loc = $asocial_icons[$site_key]['javascript']['location'];
 			$icon_js_in_footer = ( $icon_js_loc == 'footer' ) ? true : false;
 			wp_enqueue_script( $site_key . '_share', $icon_js_src, array(), false, $icon_js_in_footer );
+			echo "ICON HAS JS!";
 		}
 
 		return $icon_html;
