@@ -56,18 +56,13 @@
 		$icon_html = $asocial_icons[$site_key]['formats'][$icon_format]['html'];
 		$icon_html = asocial_dynamic_html( $icon_html, $wp_query->post->ID );
 
-		if ( !isset( $icon_html ) || strlen( $icon_html ) == 0 ) return false;
-
-		$icon_has_js = ( isset( $asocial_icons[$site_key]['javascript']['src'] ) && strlen( $asocial_icons[$site_key]['javascript']['src'] ) > 0 ) ? true : false;
-
+		$icon_has_js = ( isset( $asocial_icons[$site_key]['js'] ) && strlen( $asocial_icons[$site_key]['js'] ) > 0 ) ? true : false;
 		if ( $icon_has_js ) {
-			$icon_js_src = $asocial_icons[$site_key]['javascript']['src'];
-			$icon_js_loc = $asocial_icons[$site_key]['javascript']['location'];
-			$icon_js_in_footer = ( $icon_js_loc == 'footer' ) ? true : false;
-			var_dump( wp_enqueue_script( $site_key . '_share', $icon_js_src, array(), false, $icon_js_in_footer ) );
+			$icon_js = $asocial_icons[$site_key]['js'];
+			$icon_html .= '<script type="text/javascript" src="' . $icon_js . '"></script>';
 		}
 
-		return $icon_html;
+		return ( isset( $icon_html ) && strlen( $icon_html ) > 0 ) ? $icon_html : false;
 	}
 
 	function asocial_insert_icons($icon_format = null)

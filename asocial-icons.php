@@ -5,10 +5,7 @@
 	$asocial_icons = array(
 		'gplus' => array(
 			'name' => 'Google+',
-			'javascript' => array(
-				'src' => 'https://apis.google.com/js/plusone.js',
-				'location' => 'footer'
-			),
+			'js' => 'https://apis.google.com/js/plusone.js',
 			'formats' => array(
 				'small' => array(
 					'name' => 'Small',
@@ -30,7 +27,6 @@
 		),
 		'facebook' => array(
 			'name' => 'Facebook',
-			'javascript' => array(),
 			'formats' => array(
 				'standard' => array(
 					'name' => 'Standard',
@@ -48,10 +44,7 @@
 		),
 		'twitter' => array(
 			'name' => 'Twitter',
-			'javascript' => array(
-				'src' => 'http://platform.twitter.com/widgets.js',
-				'location' => 'footer'
-			),
+			'js' => 'http://platform.twitter.com/widgets.js',
 			'formats' => array(
 				'no_count' => array(
 					'name' => 'No Count',
@@ -69,10 +62,7 @@
 		),
 		'linkedin' => array(
 			'name' => 'LinkedIn',
-			'javascript' => array(
-				'src' => 'http://platform.linkedin.com/in.js',
-				'location' => 'footer'
-			),
+			'js' => 'http://platform.linkedin.com/in.js',
 			'formats' => array(
 				'no_count' => array(
 					'name' => 'No Count',
@@ -90,10 +80,7 @@
 		),
 		'digg' => array(
 			'name' => 'Digg',
-			'javascript' => array(
-				'src' => 'http://widgets.digg.com/buttons.js',
-				'location' => 'footer'
-			),
+			'js' => 'http://widgets.digg.com/buttons.js',
 			'formats' => array(
 				'icon' => array(
 					'name' => 'Icon',
