@@ -61,7 +61,7 @@
 
 		$icons_html = "<div class=\"asocial-icons\">";
 		foreach ( $asocial_icons as $site_key => $val ) {
-			if ( isset( $asocial_options[$site_key . '-status'] ) && $asocial_options[$site_key . '-status'] == 'on' ) {
+			if ( isset( $asocial_options[$site_key] ) && $asocial_options[$site_key] != 'off' ) {
 				$icons_html .= asocial_get_icon( $site_key );
 			}
 		}

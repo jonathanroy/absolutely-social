@@ -75,12 +75,10 @@
 	{
 		global $asocial_options, $asocial_icons;
 
-		$checked = ( isset($asocial_options[$site_key . '-status']) && $asocial_options[$site_key . '-status'] == 'on' ) ? 'checked="checked" ' : '';
-		echo "<p>Active <input class=\"check-field\" type=\"checkbox\" value=\"on\" name=\"asocial_options[" . $site_key . "-status]\" " . $checked . "/></p>" . PHP_EOL;
-
-		echo "<select name=\"" . $site_key . "-format\">";
+		echo "<select name=\"" . $site_key . "\">";
+		echo "<option value=\"off\">Inactive</option>";
 		foreach ( $asocial_icons[$site_key]['formats'] as $format_key => $format ) {
-			$selected = ( isset( $asocial_options[$site_key . '-format'] ) && $asocial_options[$site_key . '-format'] == $format_key ) ? ' selected="selected"' : '';
+			$selected = ( isset( $asocial_options[$site_key] ) && $asocial_options[$site_key] == $format_key ) ? ' selected="selected"' : '';
 			echo "<option value=\"" . $format_key . "\"" . $selected . ">" . $format['name'] . "</option>";
 		}
 		echo "</select>" . PHP_EOL;
