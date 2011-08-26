@@ -204,7 +204,7 @@
 			$value = array(
 				urlencode( $post->post_title ),
 				get_permalink($post_ID),
-				urlencode( ( isset( $post->post_excerpt ) && strlen( $post->post_excerpt ) > 0 ) ? $post->post_excerpt : substr( strip_tags( $post->post_content ), 0, 250 ) ),
+				urlencode( ( isset( $post->post_excerpt ) && strlen( $post->post_excerpt ) > 0 ) ? $post->post_excerpt : substr( strip_tags( $post->post_content ), 0, 250 ) . '...' ),
 			);
 
 			return str_replace($symbol, $value, $url);
