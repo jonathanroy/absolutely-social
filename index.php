@@ -140,6 +140,7 @@
 
 			foreach ( $asocial_insert_where_options as $key => $val ) {
 				echo "<p><input class=\"check-field\" type=\"checkbox\" value=\"on\" name=\"asocial_options[" . $key . "]\" " . $checked . "/> " . $val . "</p>" . PHP_EOL;
+			}
 		}
 
 		function asocial_icon_set_setting()
