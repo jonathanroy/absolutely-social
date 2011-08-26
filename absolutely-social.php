@@ -49,6 +49,7 @@
 	function asocial_get_icon($site_key, $icon_format = null)
 	{
 		global $asocial_options, $asocial_icons;
+		global $wp_query;
 
 		$icon_format = !is_null($icon_format) ? $icon_format : $asocial_options[$site_key];
 
@@ -56,7 +57,8 @@
 		$icon_js_loc = $asocial_icons[$site_key]['javascript']['location'];
 		$icon_js_in_footer = ( $icon_js_loc == 'footer' ) ? true : false;
 
-		$icon_html = asocial_dynamic_html( $asocial_icons[$site_key]['formats'][$icon_format]['html'] );
+		$icon_html = $asocial_icons[$site_key]['formats'][$icon_format]['html'];
+		$icon_html = asocial_dynamic_html( $icon_html, $wp_query->post->ID );
 
 		if ( !isset( $icon_html ) || strlen( $icon_html ) == 0 ) return false;
 
