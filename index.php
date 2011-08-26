@@ -107,17 +107,14 @@
 	//	Register form elements
 		function asocial_register_and_build_fields()
 		{
-			global $asocial_options, $asocial_sites, $asocial_icon_sets;
-
 			register_setting('asocial_options', 'asocial_options', 'asocial_validate_setting');
 
-			add_settings_field('insert_where', 'Insert the icons:', 'asocial_insert_where_setting', 'asocial-admin', 'main_section');
 			add_settings_section('main_section', '', 'section_cb', 'asocial-admin');
+
+			add_settings_field('insert_where', 'Insert the icons:', 'asocial_insert_where_setting', 'asocial-admin', 'main_section');
 			add_settings_field('icon_set', 'Choose icon set:', 'asocial_icon_set_setting', 'asocial-admin', 'main_section');
 			add_settings_field('icon_size', 'Choose icon size:', 'asocial_icon_size_setting', 'asocial-admin', 'main_section');
 			add_settings_field('sites', 'Select social sites:', 'asocial_sites_setting', 'asocial-admin', 'main_section');
-			}
-			
 		}
 		add_action('admin_init', 'asocial_register_and_build_fields');
 
