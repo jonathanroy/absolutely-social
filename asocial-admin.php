@@ -13,6 +13,7 @@
 //	You get this if you click the left-column "Absolutely Social" (added above)
 	function asocial_build_admin_page()
 	{
+		global $asocial_options;
 	?>
 		<div class="wrap">
 			<div class="icon32" id="icon-tools"><br /></div>
