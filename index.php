@@ -104,15 +104,11 @@
 			global $asocial_options, $asocial_sites, $asocial_icon_sets;
 
 			register_setting('asocial_options', 'asocial_options', 'asocial_validate_setting');
-			
-			add_settings_section('main_section', '', 'section_cb', 'asocial-admin');
-
-			add_settings_field('icon_set', 'Choose icon set:', 'asocial_icon_set_setting', 'asocial-admin', 'main_section');
 
 			add_settings_field('insert_where', 'Insert automatically?', 'asocial_insert_where_setting', 'asocial-admin', 'main_section');
-
+			add_settings_section('main_section', '', 'section_cb', 'asocial-admin');
+			add_settings_field('icon_set', 'Choose icon set:', 'asocial_icon_set_setting', 'asocial-admin', 'main_section');
 			add_settings_field('icon_size', 'Choose icon size:', 'asocial_icon_size_setting', 'asocial-admin', 'main_section');
-
 			foreach ( $asocial_sites as $key => $val ) {
 				if ( in_array($key, $asocial_icon_sets[$asocial_options['icon_set']]['available-icons']) ) {
 					add_settings_field($key, $val['name'], 'asocial_site_setting', 'asocial-admin', 'main_section', $key);
