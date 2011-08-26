@@ -19,18 +19,18 @@
 /*
 	Define social bookmarking sites */
 	$asocial_sites = array(
-		'delicious' => array( 'name' => 'Delicious', 'submit-url' => 'http://delicious.com/post?url=%the_permalink%&title=%the_title%&notes=%the_excerpt%' ),
-		'digg' => array( 'name' => 'Digg', 'submit-url' => 'http://digg.com/submit?phase=2&url=%the_permalink%&title=%the_title%&bodytext=%the_excerpt%' ),
-		'facebook' => array( 'name' => 'Facebook', 'submit-url' => 'http://www.facebook.com/share.php?u=%the_permalink%&t=%the_title%' ),
-		'friendfeed' => array( 'name' => 'Friendfeed', 'submit-url' => 'http://www.friendfeed.com/share?title=%the_title%&link=%the_permalink%' ),
-		'google-bookmarks' => array( 'name' => 'Google Bookmarks', 'submit-url' => 'http://www.google.com/bookmarks/mark?op=edit&bkmk=%the_permalink%&title=%the_title%&annotation=%the_excerpt%' ),
-		'hacker-news' => array( 'name' => 'Hacker News', 'submit-url' => 'http://news.ycombinator.com/submitlink?u=%the_permalink%&t=%the_title%' ),
-		'linkedin' => array( 'name' => 'LinkedIn', 'submit-url' => 'http://www.linkedin.com/shareArticle?mini=true&url=%the_permalink%&title=%the_title%&summary=%the_excerpt%' ),
-		'newsvine' => array( 'name' => 'Newsvine', 'submit-url' => 'http://www.newsvine.com/_tools/seed&save?u=%the_permalink%&h=%the_title%' ),
-		'stumbleupon' => array( 'name' => 'StumbleUpon', 'submit-url' => 'http://www.stumbleupon.com/submit?url=%the_permalink%&title=%the_title%' ),
-		'tumblr' => array( 'name' => 'Tumblr', 'submit-url' => 'http://www.tumblr.com/share/link?url=%the_permalink%&name=%the_title%&description=%the_excerpt%' ),
-		'twitter' => array( 'name' => 'Twitter', 'submit-url' => 'http://twitter.com/home?status=%the_title% - %the_permalink%' ),
-		'yahoo-bookmarks' => array( 'name' => 'Yahoo Bookmarks', 'submit-url' => 'http://bookmarks.yahoo.com/toolbar/savebm?u=%the_permalink%&t=%the_title%' )
+		'delicious' => array( 'name' => 'Delicious', 'submit-url' => 'http://delicious.com/post?url=%the_permalink%&title=%the_title%&notes=%the_excerpt%', 'method' => 'popup' ),
+		'digg' => array( 'name' => 'Digg', 'submit-url' => 'http://digg.com/submit?phase=2&url=%the_permalink%&title=%the_title%&bodytext=%the_excerpt%', 'method' => 'link' ),
+		'facebook' => array( 'name' => 'Facebook', 'submit-url' => 'http://www.facebook.com/share.php?u=%the_permalink%&t=%the_title%', 'method' => 'popup' ),
+		'friendfeed' => array( 'name' => 'Friendfeed', 'submit-url' => 'http://www.friendfeed.com/share?title=%the_title%&link=%the_permalink%', 'method' => 'popup' ),
+		'google-bookmarks' => array( 'name' => 'Google Bookmarks', 'submit-url' => 'http://www.google.com/bookmarks/mark?op=edit&bkmk=%the_permalink%&title=%the_title%&annotation=%the_excerpt%', 'method' => 'popup' ),
+		'hacker-news' => array( 'name' => 'Hacker News', 'submit-url' => 'http://news.ycombinator.com/submitlink?u=%the_permalink%&t=%the_title%', 'method' => 'popup' ),
+		'linkedin' => array( 'name' => 'LinkedIn', 'submit-url' => 'http://www.linkedin.com/shareArticle?mini=true&url=%the_permalink%&title=%the_title%&summary=%the_excerpt%', 'method' => 'popup' ),
+		'newsvine' => array( 'name' => 'Newsvine', 'submit-url' => 'http://www.newsvine.com/_tools/seed&save?u=%the_permalink%&h=%the_title%', 'method' => 'popup' ),
+		'stumbleupon' => array( 'name' => 'StumbleUpon', 'submit-url' => 'http://www.stumbleupon.com/submit?url=%the_permalink%&title=%the_title%', 'method' => 'popup' ),
+		'tumblr' => array( 'name' => 'Tumblr', 'submit-url' => 'http://www.tumblr.com/share/link?url=%the_permalink%&name=%the_title%&description=%the_excerpt%', 'method' => 'link' ),
+		'twitter' => array( 'name' => 'Twitter', 'submit-url' => 'http://twitter.com/home?status=%the_title% - %the_permalink%', 'method' => 'popup' ),
+		'yahoo-bookmarks' => array( 'name' => 'Yahoo Bookmarks', 'submit-url' => 'http://bookmarks.yahoo.com/toolbar/savebm?u=%the_permalink%&t=%the_title%', 'method' => 'popup' )
 	);
 
 /*
@@ -207,7 +207,7 @@
 				if ( isset($asocial_options[$key]) && $asocial_options[$key] == 'on' ) {
 					$icon_path = ASOCIAL_ICON_DIRECTORY . "/" . $asocial_options['icon_set'] . "/" . $asocial_options['icon_size'] . "px/" . $key . ".png";
 					$url = asocial_generate_url( $val['submit-url'], $wp_query->post->ID );
-					$icons[] .= "<a id=\"" . $key . "-icon\" class=\"asocial-icon\" href=\"" . $url . "\" onclick=\"window.open('" . $url . "', '" . $val['name'] . "', 'toolbar=no,width=500,height=500'); return false;\" title=\"Share on " . $val['name'] . "\" target=\"_blank\">";
+					$icons[] .= "<a id=\"" . $key . "-icon\" class=\"asocial-icon\" href=\"" . $url . "\"" . ( ( $val['method'] == 'popup' ) ? " onclick=\"window.open('" . $url . "', '" . $val['name'] . "', 'toolbar=no,width=500,height=500'); return false;\"" : "" ) . " title=\"Share on " . $val['name'] . "\" target=\"_blank\">";
 					$icons[] .= "<img src=\"" . $icon_path . "\" width=\"" . $asocial_options['icon_size'] . "\" height=\"" . $asocial_options['icon_size'] . "\" alt=\"" . $val['name'] . "\" />";
 					$icons[] .= "</a> ";
 				}
