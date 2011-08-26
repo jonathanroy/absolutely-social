@@ -91,7 +91,6 @@
 					<?php do_settings_sections('asocial-admin'); ?>
 					<p class="submit"><input name="Submit" type="submit" class="button-primary" value="<?php esc_attr_e('Save Changes'); ?>" /></p>
 				</form>
-				<?php var_dump( get_option('asocial_options') ); ?>
 			</div>
 		<?php
 		}
@@ -214,9 +213,6 @@
 		{
 			global $asocial_options, $asocial_sites, $wp_query;
 
-			if ( $asocial_options['tumblr'] )
-				wp_enqueue_script('tumblr_share', 'http://platform.tumblr.com/v1/share.js');
-
 			$icons = array();
 			foreach ( $asocial_sites as $key => $val ) {
 				if ( isset($asocial_options[$key]) && $asocial_options[$key] == 'on' ) {
@@ -243,6 +239,9 @@
 
 
 /*	5)	Add Boilerplate options to page as requested */
+
+		if ( $asocial_options['tumblr'] )
+				wp_enqueue_script('tumblr_share', 'http://platform.tumblr.com/v1/share.js');
 
 		// insert icons
 		if ( isset($asocial_options['insert_where']) && $asocial_options['insert_where'] ) {
