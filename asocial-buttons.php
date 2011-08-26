@@ -34,7 +34,7 @@
 				),
 				'button_count' => array(
 					'name' => 'Button Count',
-					'html' => '<iframe src="http://www.facebook.com/plugins/like.php?app_id=166922286717944&amp;href&amp;send=false&amp;layout=button_count&amp;width=75&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:75px; height:21px;" allowTransparency="true"></iframe>'
+					'html' => '<iframe src="http://www.facebook.com/plugins/like.php?app_id=166922286717944&amp;href&amp;send=false&amp;layout=button_count&amp;width=47&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=20" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:47px; height:20px;" allowTransparency="true"></iframe>'
 				),
 				'box_count' => array(
 					'name' => 'Box Count',
