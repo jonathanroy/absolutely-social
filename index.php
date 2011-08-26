@@ -83,7 +83,7 @@
 		function asocial_build_admin_page()
 		{
 		?>
-			<div id="asocial-options-wrap">
+			<div class="wrap">
 				<div class="icon32" id="icon-tools"><br /></div>
 				<h2>Absolutely Social Admin</h2>
 				<form method="post" action="options.php" enctype="multipart/form-data">
