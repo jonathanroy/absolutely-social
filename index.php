@@ -231,7 +231,7 @@
 
 		if ( !is_admin() ) {
 			if ( $asocial_options['tumblr'] )
-					wp_enqueue_script('tumblr_share', 'http://platform.tumblr.com/v1/share.js');
+					wp_enqueue_script('tumblr_share', 'http://platform.tumblr.com/v1/share.js', array(), false, true); // in footer
 		}
 
 		// insert icons
