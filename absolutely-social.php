@@ -92,6 +92,11 @@
 		return $content . asocial_insert_buttons();
 	}
 
+	function asocial_the_buttons($button_format = null)
+	{
+		echo asocial_insert_buttons($button_format);
+	}
+
 
 /*
 	5. Add Absolutely Social to page as requested */
