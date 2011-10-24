@@ -41,7 +41,7 @@
     		$post_excerpt = urlencode( ( isset( $post->post_excerpt ) && strlen( $post->post_excerpt ) > 0 ) ? $post->post_excerpt : substr( strip_tags( $post->post_content ), 0, 250 ) . '...' );
         }
         else {
-            $post_title = urlencode( wp_title('') );
+            $post_title = urlencode( wp_title('', false) );
             $post_permalink = urlencode( ( ( !empty( $_SERVER['HTTPS'] ) ) ? "https://" : "http://" ) . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
             $post_excerpt = '';
         }
