@@ -35,18 +35,16 @@
 	{
 		$post = get_post( $post_ID );
         
-        $post_title = urlencode( $post->post_title );
-    	$post_permalink = urlencode( get_permalink($post_ID) );
-    	$post_excerpt = urlencode( ( isset( $post->post_excerpt ) && strlen( $post->post_excerpt ) > 0 ) ? $post->post_excerpt : substr( strip_tags( $post->post_content ), 0, 250 ) . '...' );
-        
-        /*if ( is_single() ) {
-    	
+        if ( is_single() ) {
+            $post_title = urlencode( $post->post_title );
+            $post_permalink = urlencode( get_permalink($post_ID) );
+            $post_excerpt = urlencode( ( isset( $post->post_excerpt ) && strlen( $post->post_excerpt ) > 0 ) ? $post->post_excerpt : substr( strip_tags( $post->post_content ), 0, 250 ) . '...' );
         }
         else {
-            $post_title = urlencode( wp_title('', false) );
-            $post_permalink = urlencode( ( ( !empty( $_SERVER['HTTPS'] ) ) ? "https://" : "http://" ) . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+            $post_title = urlencode( wp_title('', 0) );
+            $post_permalink = urlencode( ( !empty( $_SERVER['HTTPS'] ) ) ? "https://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'] : "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'] );
             $post_excerpt = '';
-        }*/
+        }
 
 		$symbol = array( '%the_title%', '%the_permalink%', '%the_excerpt%' );
 		$value  = array(  $post_title,   $post_permalink,   $post_excerpt   );
