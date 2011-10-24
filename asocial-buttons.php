@@ -30,15 +30,15 @@
 			'formats' => array(
 				'standard' => array(
 					'name' => 'Standard',
-					'html' => '<iframe src="http://www.facebook.com/plugins/like.php?app_id=166922286717944&amp;href&amp;send=false&amp;layout=standard&amp;width=49&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=24" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:49px; height:24px;" allowTransparency="true"></iframe>'
+					'html' => '<iframe src="//www.facebook.com/plugins/like.php?href=%the_permalink%&amp;send=false&amp;layout=standard&amp;width=49&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=24" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:49px; height:24px;" allowTransparency="true"></iframe>'
 				),
 				'button_count' => array(
 					'name' => 'Button Count',
-					'html' => '<iframe src="http://www.facebook.com/plugins/like.php?app_id=166922286717944&amp;href&amp;send=false&amp;layout=button_count&amp;width=47&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=20" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:47px; height:20px;" allowTransparency="true"></iframe>'
+					'html' => '<iframe src="//www.facebook.com/plugins/like.php?href=%the_permalink%&amp;send=false&amp;layout=button_count&amp;width=47&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=20" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:47px; height:20px;" allowTransparency="true"></iframe>'
 				),
 				'box_count' => array(
 					'name' => 'Box Count',
-					'html' => '<iframe src="http://www.facebook.com/plugins/like.php?app_id=166922286717944&amp;href&amp;send=false&amp;layout=box_count&amp;width=60&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=50" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:50px; height:60px;" allowTransparency="true"></iframe>'
+                    'html' => '<iframe src="//www.facebook.com/plugins/like.php?href=%the_permalink%&amp;send=false&amp;layout=box_count&amp;width=60&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=50" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:50px; height:60px;" allowTransparency="true"></iframe>'
 				)
 			)
 		),
