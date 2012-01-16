@@ -106,15 +106,18 @@
 
 
 /*
-	5. Add Absolutely Social to page as requested */
+	5. Add Absolutely Social to post as requested */
 
-	// insert icons
-	if ( isset( $asocial_options['insert_before_post'] ) && $asocial_options['insert_before_post'] )
-		add_filter('the_content', 'asocial_insert_buttons_before_post');
+	if ( in_the_loop() ) {
 
-	if ( isset( $asocial_options['insert_after_post'] ) && $asocial_options['insert_after_post'] )
-		add_filter('the_content', 'asocial_insert_buttons_after_post');
+		// insert icons
+		if ( isset( $asocial_options['insert_before_post'] ) && $asocial_options['insert_before_post'] )
+			add_filter('the_content', 'asocial_insert_buttons_before_post');
+	
+		if ( isset( $asocial_options['insert_after_post'] ) && $asocial_options['insert_after_post'] )
+			add_filter('the_content', 'asocial_insert_buttons_after_post');
 
+	}
 
 /*	End customization for Absolutely Social */
 
