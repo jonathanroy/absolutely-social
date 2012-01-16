@@ -93,12 +93,14 @@
 	{
 		if ( get_post_type( get_the_ID() ) == 'post' )
 			return asocial_insert_buttons() . $content;
+		return $content;
 	}
 
 	function asocial_insert_buttons_after_post($content)
 	{
 		if ( get_post_type( get_the_ID() ) == 'post' )
 			return $content . asocial_insert_buttons();
+		return $content;
 	}
 
 	function asocial_the_buttons($button_format = null)
