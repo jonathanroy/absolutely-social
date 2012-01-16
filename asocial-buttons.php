@@ -48,15 +48,15 @@
 			'formats' => array(
 				'no_count' => array(
 					'name' => 'No Count',
-					'html' => '<a href="http://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a>'
+					'html' => '<a href="http://twitter.com/share" class="twitter-share-button" data-count="none"></a>'
 				),
 				'horizontal_count' => array(
 					'name' => 'Horizontal Count',
-					'html' => '<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a>'
+					'html' => '<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal"></a>'
 				),
 				'box_count' => array(
 					'name' => 'Vertical Count',
-					'html' => '<a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical">Tweet</a>'
+					'html' => '<a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical"></a>'
 				)
 			)
 		),
