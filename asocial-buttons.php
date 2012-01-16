@@ -30,15 +30,15 @@
 			'formats' => array(
 				'standard' => array(
 					'name' => 'Standard',
-					'html' => '<iframe src="//www.facebook.com/plugins/like.php?href=%the_permalink%&amp;send=false&amp;layout=standard&amp;width=49&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=24" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:49px; height:24px;" allowTransparency="true"></iframe>'
+					'html' => '<iframe src="//www.facebook.com/plugins/like.php?href=%the_permalink%&amp;send=false&amp;layout=standard&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:35px;" allowTransparency="true"></iframe>'
 				),
 				'button_count' => array(
 					'name' => 'Button Count',
-					'html' => '<iframe src="//www.facebook.com/plugins/like.php?href=%the_permalink%&amp;send=false&amp;layout=button_count&amp;width=47&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=20" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:47px; height:20px;" allowTransparency="true"></iframe>'
+					'html' => '<iframe src="//www.facebook.com/plugins/like.php?href=%the_permalink%&amp;send=false&amp;layout=button_count&amp;width=90&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:90px; height:21px;" allowTransparency="true"></iframe>'
 				),
 				'box_count' => array(
 					'name' => 'Box Count',
-                    'html' => '<iframe src="//www.facebook.com/plugins/like.php?href=%the_permalink%&amp;send=false&amp;layout=box_count&amp;width=60&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=50" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:50px; height:60px;" allowTransparency="true"></iframe>'
+					'html' => '<iframe src="//www.facebook.com/plugins/like.php?href=%the_permalink%&amp;send=false&amp;layout=box_count&amp;width=55&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=90" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:55px; height:90px;" allowTransparency="true"></iframe>'
 				)
 			)
 		),
